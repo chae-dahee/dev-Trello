@@ -1,4 +1,5 @@
 # file-tree-generator
+```
 📦src
  ┣ 📂assets
  ┃ ┗ 📜react.svg
@@ -50,6 +51,7 @@
  ┣ 📜index.css
  ┣ 📜main.tsx
  ┗ 📜vite-env.d.ts
+```
 
 # React + TypeScript + Vite
 
