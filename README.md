@@ -1,4 +1,5 @@
 # file-tree-generator
+```bash
 📦src
  ┣ 📂assets
  ┃ ┗ 📜react.svg
