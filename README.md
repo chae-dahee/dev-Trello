@@ -51,7 +51,7 @@
  ┣ 📜index.css
  ┣ 📜main.tsx
  ┗ 📜vite-env.d.ts
-bash
+```
 
 # React + TypeScript + Vite
 
