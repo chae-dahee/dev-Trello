@@ -1,5 +1,5 @@
 # file-tree-generator
-```bash
+```
 📦src
  ┣ 📂assets
  ┃ ┗ 📜react.svg
@@ -51,7 +51,7 @@
  ┣ 📜index.css
  ┣ 📜main.tsx
  ┗ 📜vite-env.d.ts
-```bash
+bash
 
 # React + TypeScript + Vite
 
