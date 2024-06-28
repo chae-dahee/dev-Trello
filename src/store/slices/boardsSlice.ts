@@ -1,10 +1,26 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IBoard } from "../../types";
+import { IBoard, IList, ITask } from "../../types";
 
 type TBoardsrState = { modalActive: boolean; boardArray: IBoard[] };
 
 type TAddBoardAction = {
   board: IBoard;
+};
+
+type TDeleteListAction = {
+  boardId: string;
+  listId: string;
+};
+
+type TAddListAction = {
+  boardId: string;
+  list: IList;
+};
+
+type TAddTaskAction = {
+  boardId: string;
+  listId: string;
+  task: ITask;
 };
 
 const initialState: TBoardsrState = {
@@ -55,9 +71,46 @@ const boardsSlice = createSlice({
   reducers: {
     addBoard: (state, { payload }: PayloadAction<TAddBoardAction>) => {
       state.boardArray.push(payload.board);
-    }, //불변성 신경 x  > immer 라이브러리 사용하기 때문이다.
+    },
+    addList: (state, { payload }: PayloadAction<TAddListAction>) => {
+      state.boardArray.map((board) =>
+        board.boardId === payload.boardId
+          ? { ...board, lists: board.lists.push(payload.list) }
+          : board
+      );
+    },
+    addTask: (state, { payload }: PayloadAction<TAddTaskAction>) => {
+      state.boardArray.map((board) =>
+        board.boardId === payload.boardId
+          ? {
+              ...board,
+              lists: board.lists.map((list) =>
+                list.listId === payload.listId
+                  ? { ...list, tasks: list.tasks.push(payload.task) }
+                  : list
+              ),
+            }
+          : board
+      );
+    },
+    deleteList: (state, { payload }: PayloadAction<TDeleteListAction>) => {
+      state.boardArray = state.boardArray.map((board) =>
+        board.boardId === payload.boardId
+          ? {
+              ...board,
+              lists: board.lists.filter(
+                (list) => list.listId !== payload.listId
+              ),
+            }
+          : board
+      );
+    },
+    setModalActive: (state, { payload }: PayloadAction<boolean>) => {
+      state.modalActive = payload;
+    },
   },
 });
 
-export const { addBoard } = boardsSlice.actions;
+export const { addBoard, deleteList, setModalActive, addTask, addList } =
+  boardsSlice.actions;
 export const boardsReducer = boardsSlice.reducer;
