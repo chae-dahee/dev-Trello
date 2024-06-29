@@ -11,7 +11,7 @@ type TSideFromProps = {
   setIsFromOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const SideForm: FC<TSideFromProps> = ({ setIsFromOpen, inputRef }) => {
+const SideForm: FC<TSideFromProps> = ({ setIsFromOpen }) => {
   const [inputText, setinputText] = useState("");
   const dispatch = useTypedDispatch();
 
