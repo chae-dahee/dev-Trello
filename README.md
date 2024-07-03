@@ -1,3 +1,6 @@
+# deploy - firebase
+https://dev-trello.web.app/
+
 # file-tree-generator
 ```
 📦src
